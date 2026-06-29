@@ -4,6 +4,7 @@ import { authRouter } from './routes/auth.js'
 import session from "express-session"
 import dotenv from "dotenv"
 import { meRouter } from './routes/me.js'
+import { cartRouter } from './routes/cart.js'
 
 const app = express()
 dotenv.config()
@@ -24,6 +25,7 @@ app.use(session({
 app.use("/api/products", productsRouter)
 app.use("/api/auth/me", meRouter)
 app.use("/api/auth",authRouter)
+app.use("/api/cart", cartRouter)
 
 app.listen(4000, ()=>{
     console.log(`Server running at http://localhost:4000`)  
