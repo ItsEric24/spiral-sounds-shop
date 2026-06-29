@@ -28,12 +28,6 @@ export async function addToCart(req, res) {
 export async function getCartCount(req, res) {
   const userId = req.session.userId;
 
-  if (!userId) {
-    return res
-      .status(400)
-      .json({ error: "Not signed in, please sign in to use the cart" });
-  }
-
   const cartCount = db
     .prepare(
       `SELECT SUM(quantity) AS cartCount FROM cart_items WHERE user_id = ?`,
